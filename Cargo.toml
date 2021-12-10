@@ -4,14 +4,16 @@ version = "0.0.10"
 authors = ["Mathias »Bob« Kraus <k.hias@gmx.de>"]
 edition = "2018"
 license = "Apache-2.0"
-build = "build.rs"
+build = "build.rs" # 指定构建脚本, 构建过程的日志内容输出到 https://github.com/rust-lang/cargo/issues/985
 
 [lib]
 name = "iceoryx_rs"
 
 [build-dependencies]
 cpp_build = "0.5"
+shadow-rs = "0.7"
 
 [dependencies]
 cpp = "0.5"
 thiserror = "1.0"
+shadow-rs = "0.7"

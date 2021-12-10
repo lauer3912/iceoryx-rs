@@ -1,15 +1,20 @@
+/*
+ * @Author       : sunzhifeng <ian.sun@auodigitech.com>
+ * @Date         : 2021-08-25 19:19:53
+ * @LastEditors  : sunzhifeng <ian.sun@auodigitech.com>
+ * @LastEditTime : 2021-12-10 21:52:47
+ * @FilePath     : /iceoryx-rs/build.rs
+ * @Description  : Created by sunzhifeng, Please coding something here
+ */
 // SPDX-License-Identifier: Apache-2.0
-
-use cpp_build;
 
 use std::env;
 use std::process::Command;
 
-fn make_and_install(
-    source_dir: &str,
-    build_dir: &str,
-    install_dir: &str,
-) -> std::io::Result<()> {
+use cpp_build;
+use shadow_rs;
+
+fn make_and_install(source_dir: &str, build_dir: &str, install_dir: &str) -> std::io::Result<()> {
     let cmake_install_prefix = format!("-DCMAKE_INSTALL_PREFIX={}", install_dir);
 
     for iceoryx_component in &["iceoryx_utils", "iceoryx_posh"] {
@@ -54,7 +59,9 @@ fn make_and_install(
     Ok(())
 }
 
-fn main() -> std::io::Result<()> {
+fn main() -> shadow_rs::SdResult<()> {
+    println!("启动自定义编译构建");
+    println!("cargo:rerun-if-changed=build.rs");
     let current_dir = env::current_dir()?;
     let current_dir = current_dir.to_str().expect("Valid dir");
 
@@ -87,5 +94,5 @@ fn main() -> std::io::Result<()> {
     #[cfg(target_os = "macos")]
     println!("cargo:rustc-link-lib=c++");
 
-    Ok(())
+    shadow_rs::new()
 }

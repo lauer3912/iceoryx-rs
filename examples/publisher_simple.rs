@@ -1,7 +1,16 @@
+/*
+ * @Author       : sunzhifeng <ian.sun@auodigitech.com>
+ * @Date         : 2021-08-25 19:19:53
+ * @LastEditors  : sunzhifeng <ian.sun@auodigitech.com>
+ * @LastEditTime : 2021-12-10 21:49:02
+ * @FilePath     : /iceoryx-rs/examples/publisher_simple.rs
+ * @Description  : Created by sunzhifeng, Please coding something here
+ */
 // SPDX-License-Identifier: Apache-2.0
 
 use iceoryx_rs::pb::{TopicBuilder, POD};
 use iceoryx_rs::Runtime;
+use iceoryx_rs::print_build_info;
 
 use std::error::Error;
 use std::thread;
@@ -15,6 +24,7 @@ struct CounterTopic {
 unsafe impl POD for CounterTopic {}
 
 fn main() -> Result<(), Box<dyn Error>> {
+    print_build_info();
     Runtime::init("publisher_simple");
 
     let topic = TopicBuilder::<CounterTopic>::new("Radar", "FrontLeft", "Counter").build()?;

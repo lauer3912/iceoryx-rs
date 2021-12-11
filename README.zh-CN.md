@@ -2,24 +2,30 @@
  * @Author       : sunzhifeng <ian.sun@auodigitech.com>
  * @Date         : 2021-08-25 21:35:39
  * @LastEditors  : sunzhifeng <ian.sun@auodigitech.com>
- * @LastEditTime : 2021-12-11 08:46:00
+ * @LastEditTime : 2021-12-11 18:22:03
  * @FilePath     : /iceoryx-rs/README.zh-CN.md
  * @Description  : Created by sunzhifeng, Please coding something here
 -->
 
 # 产品介绍
 
-## Mac 构建说明
+## 1. Mac 构建说明
+
+### 1.1. 准备条件
+
+#### 1.1.1. 下载源码
+
+- 源码下载地址：<https://github.com/elBoberido/iceoryx-rs.git>
+
+``` bash
+  cd /Users/ian/GitHub/refs/
+  git clone https://github.com/elBoberido/iceoryx-rs.git --recursive
+  ls -l
+```
+
+#### 1.1.2. 构建基础的 iceoryx 源码，并且安装依赖
 
 ```bash
-  https://github.com/elBoberido/iceoryx-rs.git
-  git clone https://github.com/elBoberido/iceoryx-rs.git --recursive
-  ls
-  cd iceoryx-rs
-  ls
-  cd iceoryx
-  cd ../
-  code ./
   cd "/Users/ian/GitHub/refs/iceoryx-rs"
 
   # 所在路径：/Users/ian/GitHub/refs/iceoryx-rs/iceoryx
@@ -42,10 +48,33 @@
   # 构建编译 iceoryx，生成必要的 include, bin, lib 等目录
   cmake -Bbuild -Hiceoryx_meta -DCMAKE_PREFIX_PATH=$(PWD)/build/dependencies/
   cmake --build build -j 4
+```
 
+#### 1.1.3. 更多 iceoryx 的编译说明
+
+##### 1.1.3.1. 编译 examples 目录
+
+```bash
+  cd "/Users/ian/GitHub/refs/iceoryx-rs/iceoryx/"
+  ICEORYX_DIR=$PWD
   # 使用工具构建 iceoryx 项目的 examples
   ./tools/iceoryx_build_test.sh examples
 
+```
+
+##### 1.1.3.2. 构建动态库
+
+```bash
+  cd "/Users/ian/GitHub/refs/iceoryx-rs/iceoryx/"
+  ICEORYX_DIR=$PWD
+  # 使用工具构建 iceoryx 项目的
+  ./tools/iceoryx_build_test.sh build-shared
+
+```
+
+### 1.2. 编译构建 iceoryx-rs 项目
+
+```bash
   ####### 构建 iceoryx-rs 项目 #######
   cd ../
   # 所在路径：/Users/ian/GitHub/refs/iceoryx-rs
@@ -56,7 +85,7 @@
   cargo build --all --release --examples
 ```
 
-## 运行 Demo
+## 2. 运行 Demo
 
 Open three terminals. 开启 3 个终端窗口
 

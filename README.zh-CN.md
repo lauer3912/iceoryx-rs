@@ -2,7 +2,7 @@
  * @Author       : sunzhifeng <ian.sun@auodigitech.com>
  * @Date         : 2021-08-25 21:35:39
  * @LastEditors  : sunzhifeng <ian.sun@auodigitech.com>
- * @LastEditTime : 2021-12-10 22:27:37
+ * @LastEditTime : 2021-12-11 08:46:00
  * @FilePath     : /iceoryx-rs/README.zh-CN.md
  * @Description  : Created by sunzhifeng, Please coding something here
 -->
@@ -35,13 +35,19 @@
   ./configure  --prefix=$ICEORYX_DIR/build/dependencies/ --exec-prefix=$ICEORYX_DIR/build/dependencies/ --with-termlib
   make -j12
   make install
+
+
   cd ../../
   # 所在路径：/Users/ian/GitHub/refs/iceoryx-rs/iceoryx
+  # 构建编译 iceoryx，生成必要的 include, bin, lib 等目录
   cmake -Bbuild -Hiceoryx_meta -DCMAKE_PREFIX_PATH=$(PWD)/build/dependencies/
   cmake --build build -j 4
+
+  # 使用工具构建 iceoryx 项目的 examples
+  ./tools/iceoryx_build_test.sh examples
+
+  ####### 构建 iceoryx-rs 项目 #######
   cd ../
-
-
   # 所在路径：/Users/ian/GitHub/refs/iceoryx-rs
   # 构建 debug 版本
   cargo build --all --examples

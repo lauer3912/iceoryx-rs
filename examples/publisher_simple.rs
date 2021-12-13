@@ -1,11 +1,12 @@
 /*
- * @Author       : sunzhifeng <ian.sun@auodigitech.com>
+ * @Author       : ian <lauer3912@gmail.com>
  * @Date         : 2021-08-25 19:19:53
- * @LastEditors  : sunzhifeng <ian.sun@auodigitech.com>
- * @LastEditTime : 2021-12-10 21:49:02
+ * @LastEditors  : ian <lauer3912@gmail.com>
+ * @LastEditTime : 2021-12-11 21:30:01
  * @FilePath     : /iceoryx-rs/examples/publisher_simple.rs
- * @Description  : Created by sunzhifeng, Please coding something here
+ * @Description  : 消息发布者
  */
+
 // SPDX-License-Identifier: Apache-2.0
 
 use iceoryx_rs::pb::{TopicBuilder, POD};
@@ -16,6 +17,7 @@ use std::error::Error;
 use std::thread;
 use std::time::Duration;
 
+// 这告诉编译器"像C那样对类型布局"，可使用在结构体，枚举和联合类型。
 #[repr(C)]
 struct CounterTopic {
     counter: u32,

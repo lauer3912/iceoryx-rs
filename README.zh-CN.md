@@ -1,8 +1,8 @@
 <!--
  * @Author       : sunzhifeng <ian.sun@auodigitech.com>
  * @Date         : 2021-08-25 21:35:39
- * @LastEditors  : sunzhifeng <ian.sun@auodigitech.com>
- * @LastEditTime : 2021-12-11 20:32:01
+ * @LastEditors  : ian <lauer3912@gmail.com>
+ * @LastEditTime : 2021-12-13 21:20:06
  * @FilePath     : /iceoryx-rs/README.zh-CN.md
  * @Description  : Created by sunzhifeng, Please coding something here
 -->
@@ -108,6 +108,9 @@ cmake --build build --target all
 
   # 构建 release 版本
   cargo build --all --release --examples
+
+  # 清除临时生成文件，并编译
+  rm -fr ./target/debug && cargo build --all --examples
 ```
 
 ## 2. 运行 Demo

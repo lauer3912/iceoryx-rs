@@ -2,7 +2,7 @@
  * @Author       : sunzhifeng <ian.sun@auodigitech.com>
  * @Date         : 2021-08-25 21:35:39
  * @LastEditors  : ian <lauer3912@gmail.com>
- * @LastEditTime : 2021-12-13 21:20:06
+ * @LastEditTime : 2021-12-13 21:50:10
  * @FilePath     : /iceoryx-rs/README.zh-CN.md
  * @Description  : Created by sunzhifeng, Please coding something here
 -->
@@ -134,3 +134,28 @@ cd /Users/ian/GitHub/refs/iceoryx-rs/iceoryx/
 # target/debug/examples/subscriber_simple
 
 ```
+
+## 3. Rust 编译的进程与 C 编译的进程互动
+
+参见：iceoryx/iceoryx_examples/icedelivery_iantry_in_c/
+
+- 启动 iox-roudi
+
+    ``` bash
+    cd /Users/ian/GitHub/refs/iceoryx-rs/iceoryx/
+    ./target/iceoryx-install/bin/iox-roudi
+    ```
+
+- 启动 rust 编写的消息发布者
+
+    ``` bash
+    cd /Users/ian/GitHub/refs/iceoryx-rs/iceoryx/
+    ./target/debug/examples/publisher_simple
+    ```
+
+- 启动 c 语言编写的消息订阅者
+
+    ``` bash
+    cd /Users/ian/GitHub/refs/iceoryx-rs/iceoryx/iceoryx_examples/icedelivery_iantry_in_c/
+    ./build/iox-c-subscriber
+    ```

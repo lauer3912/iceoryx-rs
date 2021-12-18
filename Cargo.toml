@@ -10,7 +10,7 @@ build = "build.rs" # 指定构建脚本, 构建过程的日志内容输出到 ht
 name = "iceoryx_rs"
 
 [build-dependencies]
-cpp_build = "0.5"
+cpp_build = "0.5" # rust-cpp - Embed C++ code directly in Rust
 shadow-rs = "0.7"
 
 [dependencies]

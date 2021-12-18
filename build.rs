@@ -1,8 +1,8 @@
 /*
  * @Author       : sunzhifeng <ian.sun@auodigitech.com>
  * @Date         : 2021-08-25 19:19:53
- * @LastEditors  : sunzhifeng <ian.sun@auodigitech.com>
- * @LastEditTime : 2021-12-10 21:52:47
+ * @LastEditors  : ian <lauer3912@gmail.com>
+ * @LastEditTime : 2021-12-18 23:00:35
  * @FilePath     : /iceoryx-rs/build.rs
  * @Description  : Created by sunzhifeng, Please coding something here
  */
@@ -17,7 +17,7 @@ use shadow_rs;
 fn make_and_install(source_dir: &str, build_dir: &str, install_dir: &str) -> std::io::Result<()> {
     let cmake_install_prefix = format!("-DCMAKE_INSTALL_PREFIX={}", install_dir);
 
-    for iceoryx_component in &["iceoryx_utils", "iceoryx_posh"] {
+    for iceoryx_component in &["iceoryx_utils", "iceoryx_posh", "iceoryx_binding_c"] {
         let component_source_dir = format!("{}/{}", source_dir, iceoryx_component);
         let component_build_dir = format!("{}/{}", build_dir, iceoryx_component);
 
@@ -35,6 +35,7 @@ fn make_and_install(source_dir: &str, build_dir: &str, install_dir: &str) -> std
             .args(&[
                 "-DCMAKE_BUILD_TYPE=Release",
                 "-DBUILD_SHARED_LIBS=OFF",
+                "-DBINDING_C=ON",
                 &cmake_install_prefix,
                 &component_source_dir,
             ])

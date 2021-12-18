@@ -1,5 +1,8 @@
 # iceoryx-rs
 
+
+核心内容，已经迁移到 https://github.com/eclipse-iceoryx/iceoryx-rs
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/8661268/114321508-64a6b000-9b1b-11eb-95ef-b84c91387cff.png" width="50%">
 </p>
